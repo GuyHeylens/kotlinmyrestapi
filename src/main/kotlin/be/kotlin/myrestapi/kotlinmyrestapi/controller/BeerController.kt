@@ -10,14 +10,21 @@ import javax.validation.Valid
 @RequestMapping("/api")
 class BeerController(private val beerRepo: BeerRepository) {
 
-    @GetMapping("/beer")
-    fun getBeers(): List<BeerEntity> = beerRepo.findAll() as List<BeerEntity>
+    @GetMapping("/beers")
+    fun getBeers(): List<BeerEntity> {
+        val result =   beerRepo.findAll()
+
+        return result
+    }
 
 
-    @PostMapping("/beer")
-    fun createNewBeer(@Valid @RequestBody beerEntity: BeerEntity): BeerEntity = beerRepo.save(beerEntity)
+    @PostMapping("/beers")
+    fun createNewBeer(@Valid @RequestBody beerEntity: BeerEntity): BeerEntity {
+      val result = beerRepo.save(beerEntity)
+        return result
+    }
 
-    @GetMapping("/beer/{id}")
+    @GetMapping("/beers/{id}")
     fun getBeerById(@PathVariable(value = "id") Id: Long): ResponseEntity<BeerEntity>{
         var result = beerRepo.findOne(Id)
         return if(result != null) {
@@ -28,7 +35,7 @@ class BeerController(private val beerRepo: BeerRepository) {
     }
 
 
-    @PutMapping("/beer/{id}")
+    @PutMapping("/beers/{id}")
     fun updateBeer(@PathVariable(value = "id") Id:Long, @Valid @RequestBody newBeerEntity: BeerEntity): ResponseEntity<BeerEntity>{
 
         var existing = beerRepo.findOne(Id)
