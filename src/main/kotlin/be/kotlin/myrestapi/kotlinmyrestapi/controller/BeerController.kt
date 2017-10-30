@@ -12,15 +12,13 @@ class BeerController(private val beerRepo: BeerRepository) {
 
     @GetMapping("/beers")
     fun getBeers(): List<BeerEntity> {
-        val result =   beerRepo.findAll()
-
-        return result
+        return beerRepo.findAll()
     }
 
 
     @PostMapping("/beers")
     fun createNewBeer(@Valid @RequestBody beerEntity: BeerEntity): BeerEntity {
-      val result = beerRepo.save(beerEntity)
+        val result = beerRepo.save(beerEntity)
         return result
     }
 
