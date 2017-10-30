@@ -4,7 +4,7 @@ import be.kotlin.myrestapi.kotlinmyrestapi.entity.BeerTypeEntity
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface BeerTypeRepository : JpaRepository<BeerTypeEntity, Long>{
-    fun findBeerTypeByName(beerTypeName: String): Iterable<BeerTypeEntity>
+    fun findByBeerType(beerTypeName: String): Iterable<BeerTypeEntity>
 
-    fun findBeerTypeByJudgeCertification(beerTypeJudgeCertification: String): Iterable<BeerTypeEntity>
+    fun findByBeerJudgeCertification(beerTypeJudgeCertification: String): Iterable<BeerTypeEntity>
 }

@@ -6,9 +6,11 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class BeerEntity (
+data class BeerEntity(
         @Id
-        @GeneratedValue(strategy=GenerationType.AUTO)
-        val Id: Long = 0,
-
-        val BeerName: String = "", val BeerType: String = "", val AlcoholPerc: Double = 0.0, val BeerColour: String = "")
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        val id: Long = 0,
+        val beerName: String = "",
+        val beerType: String = "",
+        val alcoholPercentage: Double = 0.0,
+        val beerColour: String = "")
