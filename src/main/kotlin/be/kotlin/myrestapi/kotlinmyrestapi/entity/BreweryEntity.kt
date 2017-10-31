@@ -5,10 +5,10 @@ import javax.persistence.*
 @Entity
 data class BreweryEntity(
         @Id @GeneratedValue(strategy=GenerationType.AUTO)
-        val Id: Long = 0,
-        val BreweryName : String = "",
-        val StreetName: String = "",
-        val HouseNumber: String = "",
-        val PostalCode: String = "",
-        val Town: String = ""
+        val id: Long = 0,
+        val breweryName: String = "",
+        val streetName: String = "",
+        val houseNumber: String = "",
+        val postalCode: String = "",
+        val town: String = ""
 )

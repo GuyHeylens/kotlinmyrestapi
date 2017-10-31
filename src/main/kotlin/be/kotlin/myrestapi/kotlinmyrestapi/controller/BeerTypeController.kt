@@ -15,6 +15,6 @@ class BeerTypeController(private val beerTypeRepository: BeerTypeRepository) {
 
     @GetMapping("/beertypes/{beertypename}")
     fun getBeerTypeByName(@PathVariable(value = "beertypename") beerTypeName: String):List<BeerTypeEntity>{
-        return beerTypeRepository.findBeerTypeByName(beerTypeName) as List<BeerTypeEntity>
+        return beerTypeRepository.findByBeerType(beerTypeName) as List<BeerTypeEntity>
     }
 }

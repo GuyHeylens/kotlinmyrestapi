@@ -9,7 +9,7 @@ import javax.persistence.Id
 data class BeerTypeEntity(
         @Id
         @GeneratedValue(strategy=GenerationType.AUTO)
-        val Id: Long = 0,
-        val BeerType: String = "",
-        val BeerJudgeCertification: String = ""
+        val id: Long = 0,
+        val beerType: String = "",
+        val beerJudgeCertification: String = ""
 )

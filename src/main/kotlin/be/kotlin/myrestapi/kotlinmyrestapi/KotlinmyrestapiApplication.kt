@@ -23,12 +23,12 @@ class KotlinmyrestapiApplication{
     private val log = LoggerFactory.getLogger(KotlinmyrestapiApplication::class.java)
 
 
-    @Bean
-    fun h2servletRegistration(): ServletRegistrationBean {
-        val registration = ServletRegistrationBean(WebServlet())
-        registration.addUrlMappings("/console/*")
-        return registration
-    }
+//    @Bean
+//    fun h2servletRegistration(): ServletRegistrationBean {
+//        val registration = ServletRegistrationBean(WebServlet())
+//        registration.addUrlMappings("/console/*")
+//        return registration
+//    }
 
     @Bean
     fun init(repoBeer: BeerRepository, repoBeerType: BeerTypeRepository, repoCountry: CountryRepository, repoBrewery: BreweryRepository) = CommandLineRunner{

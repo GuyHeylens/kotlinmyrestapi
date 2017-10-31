@@ -6,7 +6,7 @@ import javax.persistence.*
 data class CountryEntity (
         @Id
         @GeneratedValue(strategy=GenerationType.AUTO)
-        val Id : Long = 0,
-        val CountryName: String = ""
+        val id: Long = 0,
+        val countryName: String = ""
 
 )
