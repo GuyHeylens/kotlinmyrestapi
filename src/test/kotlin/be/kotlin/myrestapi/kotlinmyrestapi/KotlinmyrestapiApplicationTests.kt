@@ -11,6 +11,7 @@ class KotlinmyrestapiApplicationTests {
 
 	@Test
 	fun contextLoads() {
+		return Unit
 	}
 
 }
