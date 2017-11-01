@@ -5,5 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface BreweryRepository : JpaRepository<BreweryEntity, Long>{
     fun findByBreweryName(breweryName: String): Iterable<BreweryEntity>
-    fun findByCountryName(countryName: String): Iterable<BreweryEntity>
 }
