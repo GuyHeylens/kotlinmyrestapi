@@ -17,20 +17,12 @@ class BeerController(private val beerRepo: BeerRepository) {
 
 
     @PostMapping("/beers")
-    fun createNewBeer(@Valid @RequestBody beerEntity: BeerEntity): BeerEntity {
-        val result = beerRepo.save(beerEntity)
-        return result
-    }
+    fun createNewBeer(@Valid @RequestBody beerEntity: BeerEntity) = beerRepo.save(beerEntity)
 
     @GetMapping("/beers/{id}")
-    fun getBeerById(@PathVariable(value = "id") Id: Long): ResponseEntity<BeerEntity>{
-        var result = beerRepo.getOne(Id)
-        return if(result != null) {
-            ResponseEntity.ok(result)
-        } else {
-            ResponseEntity.notFound().build()
-        }
-    }
+    fun getBeerById(@PathVariable(value = "id") Id: Long)= beerRepo.getOne(Id)?.let {
+        ResponseEntity.ok(it)
+    } ?: ResponseEntity.notFound().build()
 
 
     @PutMapping("/beers/{id}")
@@ -49,7 +41,5 @@ class BeerController(private val beerRepo: BeerRepository) {
         }
 
     }
-
-
 
 }
