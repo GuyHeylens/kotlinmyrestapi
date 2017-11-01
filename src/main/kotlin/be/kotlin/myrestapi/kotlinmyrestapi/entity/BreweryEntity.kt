@@ -10,5 +10,5 @@ data class BreweryEntity(
         val streetName: String = "",
         val houseNumber: String = "",
         val postalCode: String = "",
-        val town: String = ""
-)
+        val town: String = "",
+        val countryId : Long = 0)

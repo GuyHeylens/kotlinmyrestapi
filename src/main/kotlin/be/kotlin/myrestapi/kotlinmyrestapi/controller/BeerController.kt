@@ -15,7 +15,6 @@ class BeerController(private val beerRepo: BeerRepository) {
         return beerRepo.findAll()
     }
 
-
     @PostMapping("/beers")
     fun createNewBeer(@Valid @RequestBody beerEntity: BeerEntity) = beerRepo.save(beerEntity)
 
@@ -24,13 +23,18 @@ class BeerController(private val beerRepo: BeerRepository) {
         ResponseEntity.ok(it)
     } ?: ResponseEntity.notFound().build()
 
+    @GetMapping("/beers/type/{id}")
+    fun getBeersByTypeId(@PathVariable(value = "id") Id: Long)= beerRepo.findByBeerTypeId(Id)?.let{
+        ResponseEntity.ok(it)
+    }?: ResponseEntity.notFound().build()
+
 
     @PutMapping("/beers/{id}")
     fun updateBeer(@PathVariable(value = "id") Id:Long, @Valid @RequestBody newBeerEntity: BeerEntity): ResponseEntity<BeerEntity>{
 
         var existing = beerRepo.getOne(Id)
 
-        val updatedBeer = existing.copy(beerName = newBeerEntity.beerName, beerColour = newBeerEntity.beerColour, alcoholPercentage = newBeerEntity.alcoholPercentage, beerType = newBeerEntity.beerType)
+        val updatedBeer = existing.copy(beerName = newBeerEntity.beerName, beerColour = newBeerEntity.beerColour, alcoholPercentage = newBeerEntity.alcoholPercentage)
 
         val result = beerRepo.save(updatedBeer)
 

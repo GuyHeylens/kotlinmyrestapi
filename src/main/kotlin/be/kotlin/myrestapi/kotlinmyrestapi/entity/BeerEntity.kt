@@ -11,6 +11,7 @@ data class BeerEntity(
         @GeneratedValue(strategy = GenerationType.AUTO)
         val id: Long = 0,
         val beerName: String = "",
-        val beerType: String = "",
         val alcoholPercentage: Double = 0.0,
-        val beerColour: String = "")
+        val beerColour: String = "",
+        val beerTypeId: Long = 0,
+        val breweryId: Long = 0)

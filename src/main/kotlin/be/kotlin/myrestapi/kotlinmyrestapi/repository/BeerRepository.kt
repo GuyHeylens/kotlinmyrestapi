@@ -8,4 +8,6 @@ interface BeerRepository : JpaRepository<BeerEntity, Long>{
     fun findByBeerName(beerName: String):Iterable<BeerEntity>
 
     fun findByAlcoholPercentage(percentage: Double):Iterable<BeerEntity>
+
+    fun findByBeerTypeId(beerTypeId: Long): Iterable<BeerEntity>
 }
