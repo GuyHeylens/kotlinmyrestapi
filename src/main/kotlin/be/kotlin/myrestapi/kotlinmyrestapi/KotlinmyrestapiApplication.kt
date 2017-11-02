@@ -35,27 +35,30 @@ class KotlinmyrestapiApplication{
 //        return registration
 //    }
 
+
     @Bean
     fun init(repoBeer: BeerRepository, repoBeerType: BeerTypeRepository, repoCountry: CountryRepository, repoBrewery: BreweryRepository) = CommandLineRunner{
 
         //save Country
-        repoCountry.save(CountryEntity(1, "Belgium"))
+
+        val c =repoCountry.save(CountryEntity(1, "Belgium"))
 
         //save BeerTypes
+        val typeBlond = repoBeerType.save(BeerTypeEntity(1, "Blonde Ale", "Blonde Ale" ))
 
-        repoBeerType.save(BeerTypeEntity(1, "Blonde Ale", "Blonde Ale" ))
         repoBeerType.save(BeerTypeEntity(2, "Flanders Red Ale", "Flanders Red Ale" ))
         repoBeerType.save(BeerTypeEntity(3, "Geuze", "Geuze" ))
         repoBeerType.save(BeerTypeEntity(4, "Lambic", "Lambic" ))
-        repoBeerType.save(BeerTypeEntity(5, "Oud Bruin", "Oud Bruin" ))
+        val typeBrown = repoBeerType.save(BeerTypeEntity(5, "Oud Bruin", "Oud Bruin" ))
+
 
         //save Brewery
-        repoBrewery.save(BreweryEntity(1, "Abdij Westvleteren", "Donkerstraat", "12", "8640", "Vleteren", countryId = 1))
+        val brewery = repoBrewery.save(BreweryEntity(1, "Abdij Westvleteren", "Donkerstraat", "12", "8640", "Vleteren",  country = c))
 
         //save some beers
-        repoBeer.save(BeerEntity(1,"Westvleteren Blond",  5.8, "Blond", 1, 1))
-        repoBeer.save(BeerEntity(2,"Westvleteren Acht",  8.0, "Brown", 5, 1))
-        repoBeer.save(BeerEntity(3,"Westvleteren Twaalf", 10.8, "Brown", 5, 1))
+        repoBeer.save(BeerEntity(1,"Westvleteren Blond",  5.8, "Blond", typeBlond, brewery))
+        repoBeer.save(BeerEntity(2,"Westvleteren Acht",  8.0, "Brown", typeBrown, brewery))
+        repoBeer.save(BeerEntity(3,"Westvleteren Twaalf", 10.8, "Brown", typeBrown, brewery))
 
     }
 }

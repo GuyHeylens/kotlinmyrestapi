@@ -11,4 +11,6 @@ data class BreweryEntity(
         val houseNumber: String = "",
         val postalCode: String = "",
         val town: String = "",
-        val countryId : Long = 0)
+        @OneToOne
+        val country: CountryEntity = CountryEntity()
+)

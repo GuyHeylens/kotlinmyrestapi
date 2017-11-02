@@ -1,9 +1,6 @@
 package be.kotlin.myrestapi.kotlinmyrestapi.entity
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 data class BeerEntity(
@@ -13,5 +10,7 @@ data class BeerEntity(
         val beerName: String = "",
         val alcoholPercentage: Double = 0.0,
         val beerColour: String = "",
-        val beerTypeId: Long = 0,
-        val breweryId: Long = 0)
+        @OneToOne
+        val beerType: BeerTypeEntity = BeerTypeEntity(),
+        @ManyToOne
+        val brewery: BreweryEntity = BreweryEntity())
