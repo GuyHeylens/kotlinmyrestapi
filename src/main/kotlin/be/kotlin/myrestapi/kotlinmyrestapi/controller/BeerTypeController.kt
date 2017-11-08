@@ -1,6 +1,6 @@
 package be.kotlin.myrestapi.kotlinmyrestapi.controller
 
-import be.kotlin.myrestapi.kotlinmyrestapi.entity.BeerTypeEntity
+import be.kotlin.myrestapi.kotlinmyrestapi.data.BeerTypeDto
 import be.kotlin.myrestapi.kotlinmyrestapi.repository.BeerTypeRepository
 import org.springframework.web.bind.annotation.*
 
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*
 class BeerTypeController(private val beerTypeRepository: BeerTypeRepository) {
 
     @GetMapping("/beertypes")
-    fun getBeerTypes(): List<BeerTypeEntity>{
+    fun getBeerTypes(): List<BeerTypeDto>{
         return beerTypeRepository.findAll()
     }
 
     @GetMapping("/beertypes/{beertypename}")
-    fun getBeerTypeByName(@PathVariable(value = "beertypename") beerTypeName: String):List<BeerTypeEntity>{
-        return beerTypeRepository.findByBeerType(beerTypeName) as List<BeerTypeEntity>
+    fun getBeerTypeByName(@PathVariable(value = "beertypename") beerTypeName: String):List<BeerTypeDto>{
+        return beerTypeRepository.findByBeerType(beerTypeName) as List<BeerTypeDto>
     }
 }

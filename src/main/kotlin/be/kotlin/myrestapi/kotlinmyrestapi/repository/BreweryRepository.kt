@@ -1,8 +1,8 @@
 package be.kotlin.myrestapi.kotlinmyrestapi.repository
 
-import be.kotlin.myrestapi.kotlinmyrestapi.entity.BreweryEntity
+import be.kotlin.myrestapi.kotlinmyrestapi.data.BreweryDto
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface BreweryRepository : JpaRepository<BreweryEntity, Long>{
-    fun findByBreweryName(breweryName: String): Iterable<BreweryEntity>
+interface BreweryRepository : JpaRepository<BreweryDto, Long>{
+    fun findByBreweryName(breweryName: String): Iterable<BreweryDto>
 }

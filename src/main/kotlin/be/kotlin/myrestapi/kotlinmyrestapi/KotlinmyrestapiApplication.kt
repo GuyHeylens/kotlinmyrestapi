@@ -1,25 +1,18 @@
 package be.kotlin.myrestapi.kotlinmyrestapi
 
-import be.kotlin.myrestapi.kotlinmyrestapi.entity.BeerEntity
-import be.kotlin.myrestapi.kotlinmyrestapi.entity.BeerTypeEntity
-import be.kotlin.myrestapi.kotlinmyrestapi.entity.BreweryEntity
-import be.kotlin.myrestapi.kotlinmyrestapi.entity.CountryEntity
+import be.kotlin.myrestapi.kotlinmyrestapi.data.BeerDto
+import be.kotlin.myrestapi.kotlinmyrestapi.data.BeerTypeDto
+import be.kotlin.myrestapi.kotlinmyrestapi.data.BreweryDto
+import be.kotlin.myrestapi.kotlinmyrestapi.data.CountryDto
 import be.kotlin.myrestapi.kotlinmyrestapi.repository.BeerRepository
 import be.kotlin.myrestapi.kotlinmyrestapi.repository.BeerTypeRepository
 import be.kotlin.myrestapi.kotlinmyrestapi.repository.BreweryRepository
 import be.kotlin.myrestapi.kotlinmyrestapi.repository.CountryRepository
-import org.h2.server.web.WebServlet
 import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.web.servlet.ServletRegistrationBean
 import org.springframework.context.annotation.Bean
-import springfox.documentation.builders.PathSelectors
-import springfox.documentation.builders.RequestHandlerSelectors
-import springfox.documentation.spi.DocumentationType
-import springfox.documentation.spring.web.plugins.Docket
-import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 
 @SpringBootApplication
@@ -41,24 +34,24 @@ class KotlinmyrestapiApplication{
 
         //save Country
 
-        val c =repoCountry.save(CountryEntity(1, "Belgium"))
+        val c =repoCountry.save(CountryDto(1, "Belgium"))
 
         //save BeerTypes
-        val typeBlond = repoBeerType.save(BeerTypeEntity(1, "Blonde Ale", "Blonde Ale" ))
+        val typeBlond = repoBeerType.save(BeerTypeDto(1, "Blonde Ale", "Blonde Ale" ))
 
-        repoBeerType.save(BeerTypeEntity(2, "Flanders Red Ale", "Flanders Red Ale" ))
-        repoBeerType.save(BeerTypeEntity(3, "Geuze", "Geuze" ))
-        repoBeerType.save(BeerTypeEntity(4, "Lambic", "Lambic" ))
-        val typeBrown = repoBeerType.save(BeerTypeEntity(5, "Oud Bruin", "Oud Bruin" ))
+        repoBeerType.save(BeerTypeDto(2, "Flanders Red Ale", "Flanders Red Ale" ))
+        repoBeerType.save(BeerTypeDto(3, "Geuze", "Geuze" ))
+        repoBeerType.save(BeerTypeDto(4, "Lambic", "Lambic" ))
+        val typeBrown = repoBeerType.save(BeerTypeDto(5, "Oud Bruin", "Oud Bruin" ))
 
 
         //save Brewery
-        val brewery = repoBrewery.save(BreweryEntity(1, "Abdij Westvleteren", "Donkerstraat", "12", "8640", "Vleteren",  country = c))
+        val brewery = repoBrewery.save(BreweryDto(1, "Abdij Westvleteren", "Donkerstraat", "12", "8640", "Vleteren",  country = c))
 
         //save some beers
-        repoBeer.save(BeerEntity(1,"Westvleteren Blond",  5.8, "Blond", typeBlond, brewery))
-        repoBeer.save(BeerEntity(2,"Westvleteren Acht",  8.0, "Brown", typeBrown, brewery))
-        repoBeer.save(BeerEntity(3,"Westvleteren Twaalf", 10.8, "Brown", typeBrown, brewery))
+        repoBeer.save(BeerDto(1,"Westvleteren Blond",  5.8, "Blond", typeBlond, brewery))
+        repoBeer.save(BeerDto(2,"Westvleteren Acht",  8.0, "Brown", typeBrown, brewery))
+        repoBeer.save(BeerDto(3,"Westvleteren Twaalf", 10.8, "Brown", typeBrown, brewery))
 
     }
 }
