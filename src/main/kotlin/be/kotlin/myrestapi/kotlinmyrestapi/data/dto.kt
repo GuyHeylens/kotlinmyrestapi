@@ -1,19 +1,24 @@
 package be.kotlin.myrestapi.kotlinmyrestapi.data
 
+import java.util.*
 import javax.persistence.*
+
+
+//Database Table representation classes.
 
 @Entity
 data class BeerDto(
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long = -1,
+        val id: Long = -1,
         val beerName: String = "",
         val alcoholPercentage: Double = 0.0,
         val beerColour: String = "",
         @OneToOne
-    val beerType: BeerTypeDto = BeerTypeDto(),
+        val beerType:  BeerTypeDto = BeerTypeDto(),
         @ManyToOne
-    val brewery: BreweryDto = BreweryDto())
+        @JoinColumn(name="breweryId")
+        val brewery: BreweryDto = BreweryDto())
 
 @Entity
 data class BeerTypeDto(
@@ -33,7 +38,9 @@ data class BreweryDto(
     val postalCode: String = "",
     val town: String = "",
     @OneToOne
-    val country: CountryDto = CountryDto())
+    val country: CountryDto = CountryDto(),
+    @OneToMany
+    val beers: List<BeerDto> = emptyList())
 
 @Entity
 data class CountryDto(
